@@ -11,7 +11,7 @@ public class WikipediaSearcher {
 
     public String getPageRevisions(String title, int limit) {
         if (limit < 1 || limit > 16) {
-            throw new ErrorsTest.BadRequest("Change limit must be between 1 and 15.");
+            throw new Errors.BadRequest("Change limit must be between 1 and 15.");
         }
         try {
             String base = "https://en.wikipedia.org/w/api.php";
@@ -29,7 +29,7 @@ public class WikipediaSearcher {
             return new String(bytes, Charset.defaultCharset());
         }
         catch (IOException | URISyntaxException error) {
-            throw new ErrorsTest.Network(error);
+            throw new Errors.Network(error);
         }
     }
 }

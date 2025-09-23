@@ -5,23 +5,14 @@ import java.net.URISyntaxException;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
-import java.util.Scanner;
 
-public class Functionality {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        URLConnection connection = connectToWikipedia();
-        String jsonData = readJsonAsStringFrom(connection);
-        printRawJson(jsonData);
-    }
+public class APIFunctionality {
 
-    private static URLConnection connectToWikipedia() throws IOException, URISyntaxException {
-        System.out.println("Enter your search: ");
-        Scanner scanner = new Scanner(System.in);
-        String searchedName = scanner.nextLine();
+    static URLConnection connectToWikipedia() throws IOException, URISyntaxException {
 
         String encodedUrlString = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=" +
-                URLEncoder.encode(searchedName, Charset.defaultCharset()) +
+                URLEncoder.encode(userSearchPrompt, Charset.defaultCharset()) +
                 "&rvprop=timestamp" + URLEncoder.encode("|",Charset.defaultCharset()) + "user&rvlimit=15&redirects";
         URI uri = new URI(encodedUrlString);
         URLConnection connection = uri.toURL().openConnection();
@@ -31,12 +22,9 @@ public class Functionality {
         return connection;
     }
 
-    private static String readJsonAsStringFrom(URLConnection connection) throws IOException {
+    static String readJsonAsStringFrom(URLConnection connection) throws IOException {
         return new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
     }
 
-    private static void printRawJson(String jsonData) {
-        System.out.println(jsonData);
-    }
 }
 

@@ -1,18 +1,14 @@
 package edu.bsu.cs;
 
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.Scanner;
 
 public class ConsoleFunctions {
     private static final int DEFAULT_LIMIT = 15;
 
-    public static void main(String[] args) {
+    private final WikipediaSearcher searcher = new WikipediaSearcher();
+    private final JsonPath
+
+    void run() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your search query: ");
         String pageTitle = scanner.nextLine();

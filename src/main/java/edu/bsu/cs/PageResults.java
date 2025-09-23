@@ -8,18 +8,18 @@ public class PageResults {
     private final String resolvedTitle;
     private final Optional<String> redirectedFrom;
     private final boolean missing;
-    private final List<Revision> revision;
+    private final List<Revision> revisions;
 
-    public PageResults(String requestedTitle, String resolvedTitle, Optional<String> redirectedFrom, boolean missing, List<Revision> revision) {
+    public PageResults(String requestedTitle, String resolvedTitle, Optional<String> redirectedFrom, boolean missing, List<Revision> revisions) {
         this.requestedTitle = requestedTitle;
         this.resolvedTitle = resolvedTitle;
         this.redirectedFrom = redirectedFrom;
         this.missing = missing;
-        this.revision = revision;
+        this.revisions = revisions;
     }
 
-    public static PageResults missing(String requestedTitle, String resolvedTitle, Optional<String> redirectedFrom){
-        return new PageResults(requestedTitle, resolvedTitle,redirectedFrom, true, List.of());
+    public static PageResults missing(String requestedTitle){
+        return new PageResults(requestedTitle, requestedTitle,Optional.empty(), true, List.of());
     }
 
     public String requestedTitle() {
@@ -35,7 +35,7 @@ public class PageResults {
         return missing;
     }
     public List<Revision> revisionTests() {
-        return revision;
+        return revisions;
     }
 
 }

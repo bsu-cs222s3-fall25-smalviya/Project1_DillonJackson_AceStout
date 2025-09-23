@@ -7,7 +7,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
 
-public class APIFunctionality {
+public class ConsoleFunctions {
 
     static URLConnection connectToWikipedia() throws IOException, URISyntaxException {
 

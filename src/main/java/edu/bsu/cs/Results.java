@@ -2,7 +2,7 @@ package edu.bsu.cs;
 
 import java.util.Scanner;
 
-public class Output {
+public class Results {
     private final Scanner scanner = new Scanner(System.in);
 
     public String userSearchPrompt() {

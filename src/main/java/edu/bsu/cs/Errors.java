@@ -1,4 +1,4 @@
 package edu.bsu.cs;
 
-public class Sorter {
+public class Errors {
 }

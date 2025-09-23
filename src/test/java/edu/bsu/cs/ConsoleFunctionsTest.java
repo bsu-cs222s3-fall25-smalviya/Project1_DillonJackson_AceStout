@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Scanner;
 
-public class consoleFunctionsTest {
+public class ConsoleFunctionsTest {
     private static final int DEFAULT_LIMIT = 15;
 
     public static void main(String[] args) {

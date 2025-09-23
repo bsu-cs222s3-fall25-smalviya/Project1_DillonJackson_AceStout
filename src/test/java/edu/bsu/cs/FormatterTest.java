@@ -3,10 +3,6 @@ package edu.bsu.cs;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-interface OutputFormatter{
-    String format(ResultsTest resultsTest);
-}
-
 public class FormatterTest implements OutputFormatter {
 
     private final ZoneId zone;
@@ -18,7 +14,7 @@ public class FormatterTest implements OutputFormatter {
     }
 
     @Override
-    public String format(ResultsTest result){
+    public String format(PageResultsTest result){
         if (result.missing()){
             return "No page found for \"" + result.requestedTitle() + "\".\n";
         }

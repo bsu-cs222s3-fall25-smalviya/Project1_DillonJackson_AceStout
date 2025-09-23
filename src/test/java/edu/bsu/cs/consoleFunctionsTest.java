@@ -17,7 +17,6 @@ public class consoleFunctionsTest {
         System.out.print("Enter your search query: ");
         String pageTitle = scanner.nextLine();
 
-        //if user input is blank/no requested page
         if(pageTitle == null || pageTitle.isBlank()) {
             System.out.println("Error: No Page Requested.");
             return;
@@ -36,14 +35,12 @@ public class consoleFunctionsTest {
             URI uri = new URI(base + "?" +query);
             URLConnection connection = uri.toURL().openConnection();
             connection.setRequestProperty("User-Agent", "BSU-CS-WikiSearch/1.0 (student project)");
-            //short timeouts
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             connection.connect();
 
             String json = new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
 
-            //no page found
             if (json.contains("\"missing\":true") || json.contains("\"missing\":true")){
                 System.out.println("No page found for \"" + pageTitle+ "\".");
             }

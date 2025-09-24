@@ -34,7 +34,7 @@ public class PageResults {
     public boolean missing(){
         return missing;
     }
-    public List<Revision> revisionTests() {
+    public List<Revision> revisions() {
         return revisions;
     }
 

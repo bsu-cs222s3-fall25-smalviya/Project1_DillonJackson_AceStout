@@ -2,7 +2,7 @@ package edu.bsu.cs;
 
 import java.util.Scanner;
 
-public class WikiApp {
+public class ConsoleFunctions {
     private static final int DEFAULT_LIMIT = 15;
 
     private WikipediaSearcher searcher = new WikipediaSearcher();

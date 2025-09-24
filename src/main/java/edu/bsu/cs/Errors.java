@@ -29,6 +29,7 @@ public final class Errors {
         public String getMessage() {
             return message;
         }
+    }
 
         public static class BadRequest extends RuntimeException {
             private String message;
@@ -47,4 +48,4 @@ public final class Errors {
             }
         }
     }
-}
+

@@ -22,7 +22,7 @@ public class ConsoleFunctions {
         try {
             String json = searcher.getPageRevisions(pageTitle, DEFAULT_LIMIT);
 
-            if (json.contains("\"missing\":true") || json.contains("\"missing\":true")) {
+            if (json.contains("\"missing\":true") || json.contains("\"missing\": true")) {
                 System.out.println("No page found for \"" + pageTitle + "\".");
                 return;
             }

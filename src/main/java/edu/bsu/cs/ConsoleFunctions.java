@@ -2,50 +2,36 @@ package edu.bsu.cs;
 
 import java.util.Scanner;
 
-public class ConsoleFunctions {
+public class WikiApp {
     private static final int DEFAULT_LIMIT = 15;
 
-    private final WikipediaSearcher searcher = new WikipediaSearcher();
-    private final JsonPath
+    private WikipediaSearcher searcher = new WikipediaSearcher();
+    private JsonPathParser parser = new JsonPathParser();
+    private final Formatter formatter = new Formatter();
 
-    void run() {
+    public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your search query: ");
+        System.out.print("Enter your Wikipedia search: ");
         String pageTitle = scanner.nextLine();
 
-        if(pageTitle == null || pageTitle.isBlank()) {
-            System.out.println("Error: No Page Requested.");
+        if (pageTitle == null || pageTitle.isBlank()) {
+            System.out.println("Error, No Page Found.");
             return;
         }
 
         try {
-            String base = "https://en.wikipedia.org/w/api.php";
-            String query = "action=query"
-                    +"&format=json"
-                    +"&prop=revisions"
-                    +"&titles=" + URLEncoder.encode(pageTitle, Charset.defaultCharset())
-                    + "&rvprop=timestamp%7Cuser"
-                    +"&rvlimit=" + DEFAULT_LIMIT
-                    + "&redirects=1";
+            String json = searcher.getPageRevisions(pageTitle, DEFAULT_LIMIT);
 
-            URI uri = new URI(base + "?" +query);
-            URLConnection connection = uri.toURL().openConnection();
-            connection.setRequestProperty("User-Agent", "BSU-CS-WikiSearch/1.0 (student project)");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-            connection.connect();
-
-            String json = new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
-
-            if (json.contains("\"missing\":true") || json.contains("\"missing\":true")){
-                System.out.println("No page found for \"" + pageTitle+ "\".");
+            if (json.contains("\"missing\":true") || json.contains("\"missing\":true")) {
+                System.out.println("No page found for \"" + pageTitle + "\".");
+                return;
             }
-            else{
-                System.out.println(json);
-            }
-        }
-        catch (IOException | URISyntaxException e){
-            System.out.println("Error: Network error while attempting to contact Wikipedia");
+            PageResults results = parser.parse(pageTitle, json);
+            System.out.print(formatter.format(results));
+        } catch (Errors.Network error) {
+            System.out.println("Error, NETWORK ERROR while contacting Wikipedia");
+        } catch (Errors.BadRequest error2) {
+            System.out.println("Error, " + error2.getMessage());
         }
     }
 }

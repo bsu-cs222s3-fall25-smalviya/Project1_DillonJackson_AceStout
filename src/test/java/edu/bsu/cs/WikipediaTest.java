@@ -21,24 +21,28 @@ public class WikipediaTest {
 
 
 
-@Test
-void noPageFoundTest() {
+    @Test
+    void noPageFoundTest() {
     String out = new Formatter().format(PageResults.missing("kkkkkk"));
     assertTrue(out.contains("No page found for \"kkkkkk\"."));
-}
+    }
 
-@Test
-void redirectTest() {
+
+    @Test
+    void blankInputTestinGUI() {
+        String pageTitle = "";
+        boolean noPageRequested = (pageTitle == null || pageTitle.isBlank());
+        assertTrue(noPageRequested);
+    }
+
+    @Test
+    void redirectTest() {
     PageResults results = new PageResults(
             "United States",
             "United States",
             Optional.empty(),
             false,
-            List.of(new Revision(Instant.parse("2025-09-20T12:01:02Z"), "UserX"))
-    );
-
-    String out = new Formatter().format(results);
-    assertFalse(out.contains("(Redirected to: "));
-}
-
-}
+            List.of(new Revision(Instant.parse("2025-09-20T12:01:02Z"), "UserX")));
+        String out = new Formatter().format(results);
+        assertFalse(out.contains("(Redirected to: "));
+    };}

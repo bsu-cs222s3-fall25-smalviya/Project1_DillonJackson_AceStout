@@ -4,7 +4,16 @@ Authors: Ace Stout and Dillon Jackson
 
 Summary: This project takes input from the user and 
 outputs the 15 most recent revisions made to the Wikipedia
-page corresponding to the user search. This project requires Gradle,
+page corresponding to the user search. It does this by first prompting the user to choose between using the console or the JavaFX GUI.
+
+To Run: 
+
+    1.) Right/secondary click on the main Class
+    2.) Choose the run option
+    3.) Enter 1 or 2 into the console
+    3.) Enter your search topic
+    4.) Wait for results
+This project requires Gradle,
 a code builder, and java language function. 
 
 To build this project there are two options:

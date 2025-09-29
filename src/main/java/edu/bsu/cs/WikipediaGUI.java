@@ -22,8 +22,8 @@ public class WikipediaGUI extends Application {
 
         TextArea output = new TextArea();
         output.setEditable(false);
-        output.setPrefColumnCount(1920);
-        output.setPrefRowCount(1080);
+        output.setPrefColumnCount(1000);
+        output.setPrefRowCount(500);
 
         BorderPane root = new BorderPane();
         root.setTop(top);
@@ -63,7 +63,7 @@ public class WikipediaGUI extends Application {
         input.setOnAction(error -> runSearch.run());
 
         stage.setTitle("Wikipedia Recent Changes\n");
-        stage.setScene(new Scene(root, 1200, 800));
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 

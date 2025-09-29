@@ -14,7 +14,7 @@ public class Main {
         String choice = scanner.nextLine();
 
         if ("2".equals(choice)) {
-            GUI.main(args); // add this method later
+            WikipediaGUI.main(args); // add this method later
         } else {
             new ConsoleFunctions().run();
         }

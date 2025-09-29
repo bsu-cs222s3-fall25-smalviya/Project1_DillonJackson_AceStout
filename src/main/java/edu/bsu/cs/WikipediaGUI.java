@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class GUI extends Application {
+public class WikipediaGUI extends Application {
 
     private static final int RESULTS_LIMIT = 15;
 

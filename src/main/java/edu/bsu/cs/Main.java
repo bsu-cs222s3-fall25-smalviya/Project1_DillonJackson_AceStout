@@ -9,12 +9,12 @@ public class Main {
         System.out.println("Choose which way to run the program");
         System.out.println("     1.)In the Console");
         System.out.println("     2.)In the GUI");
-        System.out.println("Enter Optins 1 or 2: ");
+        System.out.println("Enter Options 1 or 2: ");
 
         String choice = scanner.nextLine();
 
         if (choice == "2") {
-            JavaFX.main(args);
+            JavaFX.main(args); // add this method later
         } else {
             new ConsoleFunctions().run();
         }

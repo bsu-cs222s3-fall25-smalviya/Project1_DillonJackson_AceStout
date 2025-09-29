@@ -22,8 +22,8 @@ public class GUI extends Application {
 
         TextArea output = new TextArea();
         output.setEditable(false);
-        output.setPrefColumnCount(120);
-        output.setPrefRowCount(40);
+        output.setPrefColumnCount(1920);
+        output.setPrefRowCount(1080);
 
         BorderPane root = new BorderPane();
         root.setTop(top);

@@ -13,7 +13,7 @@ public class Main {
 
         String choice = scanner.nextLine();
 
-        if (choice == "2") {
+        if ("2".equals(choice)) {
             JavaFX.main(args); // add this method later
         } else {
             new ConsoleFunctions().run();

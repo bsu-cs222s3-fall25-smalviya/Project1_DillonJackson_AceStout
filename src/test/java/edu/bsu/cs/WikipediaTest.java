@@ -19,14 +19,11 @@ public class WikipediaTest {
         assertTrue(noPageRequested);
     }
 
-
-
     @Test
     void noPageFoundTest() {
     String out = new Formatter().format(PageResults.missing("kkkkkk"));
     assertTrue(out.contains("No page found for \"kkkkkk\"."));
     }
-
 
     @Test
     void blankInputTestinGUI() {

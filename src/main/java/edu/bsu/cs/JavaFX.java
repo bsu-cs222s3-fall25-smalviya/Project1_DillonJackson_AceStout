@@ -1,4 +1,4 @@
 package edu.bsu.cs;
 
-public class JavaFX {
+public class JavaFX extends Application {
 }

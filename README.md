@@ -11,24 +11,24 @@ To build this project there are two options:
 
 In IntelliJ:
 
-1.) Click the code button on the Github master branch
+    1.) Click the code button on the Github master branch
 
-2.) Copy the web URL 
+    2.) Copy the web URL 
 
-3.) Open IntelliJ
+    3.) Open IntelliJ
 
-1.) Select "Clone Repository"
+    4.) Select "Clone Repository"
 
-2.) Paste copied URL into the URL text box
+    5.) Paste copied URL into the URL text box
 
-3.) Run the Main class
+    6.) Run the Main class
 
 Via ZIP download:
 
-1.) Click the code button on the Github master branch
-
-2.) Click "Download ZIP"
-
-3.) Extract the folder
-
-4.) run the main Java file
+    1.) Click the code button on the Github master branch
+    
+    2.) Click "Download ZIP"
+    
+    3.) Extract the folder
+    
+    4.) run the main Java file

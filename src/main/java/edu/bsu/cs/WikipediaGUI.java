@@ -2,6 +2,7 @@ package edu.bsu.cs;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -32,7 +33,7 @@ public class WikipediaGUI extends Application {
         Runnable runSearch = () -> {
             String title = input.getText();
             if (title == null || title.isBlank()){
-                output.setText("Error: No page requested.");
+                showError("Error: No page requested.");
                 return;
             }
             try {
@@ -40,7 +41,7 @@ public class WikipediaGUI extends Application {
                 String json = searcher.getPageRevisions(title, RESULTS_LIMIT);
 
                 if (json.contains("\"missing\":true") || json.contains("\"missing\": true")) {
-                        output.setText("No page found");
+                        showError("No page found");
                 return;
                 }
 
@@ -50,11 +51,11 @@ public class WikipediaGUI extends Application {
                 String text = new Formatter().format(results);
                 output.setText(text);
             } catch (Errors.Network error) {
-                output.setText("Error: Network error while contacting Wikipedia.");
+                showError("Error: Network error while contacting Wikipedia.");
             } catch (Errors.BadRequest error) {
-                output.setText("Error: " + error.getMessage() );
+                showError("Error: " + error.getMessage() );
             } catch (Exception error) {
-                output.setText("Error: Something went wrong");
+                showError("Error: Something went wrong");
             }
         };
 
@@ -65,6 +66,14 @@ public class WikipediaGUI extends Application {
         stage.setTitle("Wikipedia Recent Changes\n");
         stage.setScene(new Scene(root, 800, 600));
         stage.show();
+    }
+
+    public void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Message");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {
